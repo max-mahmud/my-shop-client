@@ -70,15 +70,15 @@ export const authReducer = createSlice({
     [customer_login.pending]: (state, { payload }) => {
       state.loader = true;
     },
-    [customer_login.rejected]: (state, { payload }) => {
-      state.errorMessage = payload.error;
-      state.loader = false;
-    },
     [customer_login.fulfilled]: (state, { payload }) => {
       const userInfo = decodeToken(payload.token);
       state.successMessage = payload.message;
       state.loader = false;
       state.userInfo = userInfo;
+    },
+    [customer_login.rejected]: (state, { payload }) => {
+      state.errorMessage = payload.error;
+      state.loader = false;
     },
   },
 });

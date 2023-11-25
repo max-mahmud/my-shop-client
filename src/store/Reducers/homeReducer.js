@@ -140,11 +140,25 @@ export const homeReducer = createSlice({
     },
   },
   extraReducers: {
+    [get_category.pending]: (state, { payload }) => {
+      state.loader = true;
+    },
     [get_category.fulfilled]: (state, { payload }) => {
       state.categorys = payload.categorys;
+      state.loader = false;
+    },
+    [get_category.rejected]: (state, { payload }) => {
+      state.loader = false;
+    },
+    [all_banners.pending]: (state, { payload }) => {
+      state.loader = true;
     },
     [all_banners.fulfilled]: (state, { payload }) => {
       state.banners = payload.banners;
+      state.loader = false;
+    },
+    [all_banners.rejected]: (state, { payload }) => {
+      state.loader = false;
     },
     [get_products.pending]: (state, { payload }) => {
       state.loader = true;
@@ -156,13 +170,23 @@ export const homeReducer = createSlice({
       state.discount_product = payload.discount_product;
       state.loader = false;
     },
+    [get_products.rejected]: (state, { payload }) => {
+      state.loader = false;
+    },
     [price_range_product.fulfilled]: (state, { payload }) => {
       state.priceRange = payload.priceRange;
       state.latest_product = payload.latest_product;
     },
+    [query_products.pending]: (state, { payload }) => {
+      state.loader = true;
+    },
     [query_products.fulfilled]: (state, { payload }) => {
       state.products = payload.products;
+      state.loader = false;
       state.totalProduct = payload.totalProduct;
+    },
+    [query_products.rejected]: (state, { payload }) => {
+      state.loader = false;
     },
     [get_product.fulfilled]: (state, { payload }) => {
       state.product = payload.product;

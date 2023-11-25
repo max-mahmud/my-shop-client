@@ -13,10 +13,11 @@ import ShopProducts from "../components/products/ShopProducts";
 import Pagination from "../components/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { price_range_product, query_products } from "../store/Reducers/homeReducer";
+import { FadeLoader } from "react-spinners";
 
 const Shops = () => {
   const dispatch = useDispatch();
-  const { products, totalProduct, categorys, latest_product, priceRange } = useSelector(
+  const { products, loader, totalProduct, categorys, latest_product, priceRange } = useSelector(
     (state) => state.home
   );
 
@@ -77,7 +78,7 @@ const Shops = () => {
   return (
     <div>
       <Headers />
-      <section className='bg-[url("http://localhost:3000/images/banner/shop.gif")] h-[220px] mt-6 bg-cover bg-no-repeat relative bg-left'>
+      <section className='bg-[url("https://my-shop-client-nine.vercel.app/images/banner/shop.gif")] h-[220px] mt-6 bg-cover bg-no-repeat relative bg-left'>
         <div className="absolute left-0 top-0 w-full h-full bg-[#2422228a]">
           <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto">
             <div className="flex flex-col justify-center gap-1 items-center h-full w-full text-white">
@@ -314,7 +315,13 @@ const Shops = () => {
                   </div>
                 </div>
                 <div className="pb-8">
-                  <ShopProducts styles={styles} products={products} />
+                  {loader ? (
+                    <div className="w-full h-screen flex justify-center items-center bg-slate-50">
+                      <FadeLoader className="scale-125" />
+                    </div>
+                  ) : (
+                    <ShopProducts styles={styles} products={products} />
+                  )}
                 </div>
                 <div>
                   {totalProduct > parPage && (

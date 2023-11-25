@@ -36,6 +36,7 @@ export const get_orders = createAsyncThunk(
       return fulfillWithValue(data);
     } catch (error) {
       console.log(error.response);
+      return rejectWithValue(error);
     }
   }
 );
@@ -47,6 +48,7 @@ export const get_order = createAsyncThunk(
       return fulfillWithValue(data);
     } catch (error) {
       console.log(error.response);
+      return rejectWithValue(error);
     }
   }
 );

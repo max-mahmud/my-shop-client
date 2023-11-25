@@ -1,8 +1,8 @@
 import axios from "axios";
 const local = "http://localhost:5000";
-const production = "";
+const production = "https://myshop-api-wr6m.onrender.com";
 let api_Url = "";
-let mode = "dev";
+let mode = "pro";
 
 if (mode === "pro") {
   api_Url = production;

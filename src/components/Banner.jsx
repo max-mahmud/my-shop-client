@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { all_banners } from "../store/Reducers/homeReducer";
+import { FadeLoader } from "react-spinners";
 const Banner = () => {
   const dispatch = useDispatch();
-  const { banners } = useSelector((state) => state.home);
+  const { banners, loader } = useSelector((state) => state.home);
   useEffect(() => {
     dispatch(all_banners());
   }, []);
@@ -32,27 +33,41 @@ const Banner = () => {
   };
 
   return (
-    <div className="w-full md-lg:mt-6">
-      <div className="w-[85%] lg:w-[90%] mx-auto">
-        <div className="w-full flex flex-wrap md-lg:gap-8">
-          <div className="w-full">
-            <div className="my-8">
-              <Carousel autoPlay={true} infinite={true} arrows={true} showDots={true} responsive={responsive}>
-                {banners.map((img, i) => (
-                  <Link
-                    className="lg-md:h-[440px] h-auto w-full block"
-                    key={i}
-                    to={`/product/details/${img.link}`}
+    <>
+      {loader ? (
+        <div className="w-[85%] lg:w-[90%] lg-md:h-[320px] mt-2 h-[420px] mx-auto flex justify-center items-center bg-slate-50">
+          <FadeLoader className="scale-125" />
+        </div>
+      ) : (
+        <div className="w-full md-lg:mt-6">
+          <div className="w-[85%] lg:w-[90%] mx-auto">
+            <div className="w-full flex flex-wrap md-lg:gap-8">
+              <div className="w-full">
+                <div className="my-8">
+                  <Carousel
+                    autoPlay={true}
+                    infinite={true}
+                    arrows={true}
+                    showDots={true}
+                    responsive={responsive}
                   >
-                    <img src={img.banner} alt="" />
-                  </Link>
-                ))}
-              </Carousel>
+                    {banners.map((img, i) => (
+                      <Link
+                        className="lg-md:h-[440px] h-auto w-full block"
+                        key={i}
+                        to={`/product/details/${img.link}`}
+                      >
+                        <img src={img.banner} alt="" />
+                      </Link>
+                    ))}
+                  </Carousel>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
