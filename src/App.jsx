@@ -19,7 +19,7 @@ import Orders from "./components/dashboard/Orders";
 import Wishlist from "./components/dashboard/Wishlist";
 import ChangePassword from "./components/dashboard/ChangePassword";
 import OrderDetails from "./components/dashboard/OrderDetails";
-// import Chat from "./components/dashboard/Chat";
+import Chat from "./components/dashboard/Chat";
 import ConfirmOrder from "./pages/ConfirmOrder";
 
 const App = () => {
@@ -49,8 +49,8 @@ const App = () => {
           <Route path="my-orders" element={<Orders />} />
           <Route path="my-wishlist" element={<Wishlist />} />
           <Route path="change-password" element={<ChangePassword />} />
-          {/* <Route path="chat" element={<Chat />} />
-          <Route path="chat/:sellerId" element={<Chat />} /> */}
+          <Route path="chat" element={<Chat />} />
+          <Route path="chat/:sellerId" element={<Chat />} />
         </Route>
       </Route>
     </Routes>

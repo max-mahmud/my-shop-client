@@ -320,12 +320,12 @@ const Details = () => {
                 ) : (
                   ""
                 )}
-                {/* <Link
+                <Link
                   to={`/dashboard/chat/${product.sellerId}`}
                   className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-lime-500/40 bg-lime-500 text-white"
                 >
                   Chat Seller
-                </Link> */}
+                </Link>
               </div>
             </div>
           </div>

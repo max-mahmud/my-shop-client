@@ -75,14 +75,14 @@ const Dashboard = () => {
                     Wishlist
                   </Link>
                 </li>
-                {/* <li className="flex justify-start items-center gap-2 py-2">
+                <li className="flex justify-start items-center gap-2 py-2">
                   <span className="text-xl">
                     <BsChat />
                   </span>
                   <Link to="/dashboard/chat" className="block">
                     Chat
                   </Link>
-                </li> */}
+                </li>
 
                 <li className="flex justify-start items-center gap-2 py-2">
                   <span className="text-xl">
